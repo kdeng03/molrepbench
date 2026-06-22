@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+dist/
+build/
+
+CLAUDE.md
+
+# Results and outputs
+results/
+results_*/
+plots/
+plots_*/
+nohup_logs/
+nohup_logs_*/
+benchmark_data/
+slurm_logs/
+*.log
+
+# Data (optional - you may want to keep small datasets)
+data/chebi20_train.csv
+data/chebi20_val.csv
+data/chebi20_test.csv
+data/backup_full_dataset/
+
+# Keep small dataset
+!data/data_50_molecules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak

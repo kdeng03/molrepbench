@@ -1,0 +1,12 @@
+rdkit
+selfies
+deepsmiles
+requests
+pandas
+numpy
+scipy
+matplotlib
+seaborn
+scikit-learn
+tqdm
+openai  # for vLLM OpenAI-compatible API calls

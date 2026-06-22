@@ -171,10 +171,13 @@ The benchmark has been evaluated on models including:
 
 ## Acknolwedgements
 
-We used the following public datasets:
-- ChEBI-20: https://huggingface.co/datasets/liupf/ChEBI-20-MM 
-- ZINC: https://huggingface.co/datasets/yairschiff/zinc250k
-
+This work was done
+during A.R.’s internship at DSO National Laboratories as part of the DSO-AISG LLM Incentive Award.We would like to thank DSO and AI Singapore for
+the computational resources, which played a significant role in this research. We would also like
+to thank Dr Hongtao Zhao, Dr Christian Tyrchan,
+Dr Eva Nittinger, Prof. Charlotte M. Deane, and
+Prof. Michael M. Bronstein for their advice in this
+project.
 
 
 ## Citation

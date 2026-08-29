@@ -17,11 +17,6 @@ DATA_DIR = Path("/node2/arunraja/benchmark_data_small")
 RESULTS_DIR = PROJECT_ROOT / "results_small"
 FIGURES_DIR = PROJECT_ROOT / "figures"
 
-# ChEBI-20 dataset (located in parallel molbfs directory)
-CHEBI20_DIR = Path("/tier1/home/arunraja/molbfs/chebi20_data")
-CHEBI20_TRAIN = CHEBI20_DIR / "train.csv"
-CHEBI20_VAL = CHEBI20_DIR / "validation.csv"
-CHEBI20_TEST = CHEBI20_DIR / "test.csv"
 
 # Ensure directories exist
 PATHS = {

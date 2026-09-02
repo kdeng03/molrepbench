@@ -51,9 +51,7 @@ def create_atom_counting_prompt(
     return f"""How many {element} atoms are in the following molecule?
 Molecule: {molecule_str}
 
-Please reason step by step, and put your final answer within \\boxed{"{}"}.
-
-Example format: After reasoning, conclude with: The answer is \\boxed{{42}}"""
+Output ONLY the answer in the format: \\boxed{{your_count}}. Do not output any additional text or explanation."""
 
 
 # ============================================================================
@@ -79,9 +77,7 @@ def create_functional_group_prompt(
     return f"""Does the following molecule contain a {functional_group_name}?
 Molecule: {molecule_str}
 
-Please reason step by step, and put your final answer (Yes or No) within \\boxed{"{}"}.
-
-Example format: After reasoning, conclude with: The answer is \\boxed{{Yes}} or \\boxed{{No}}"""
+Output ONLY the answer in the format: \\boxed{{Yes}} or \\boxed{{No}}. Do not output any additional text or explanation."""
 
 
 # ============================================================================
@@ -115,9 +111,7 @@ def create_property_estimation_prompt(
     return f"""Estimate the {property_display} of the following molecule.
 Molecule: {molecule_str}
 
-Please reason step by step, and put your final answer (a number) within \\boxed{"{}"}.
-
-Example format: After reasoning, conclude with: The answer is \\boxed{{3.5}}"""
+Output ONLY the answer in the format: \\boxed{{your_estimation}}. Do not output any additional text or explanation."""
 
 
 # ============================================================================
@@ -146,9 +140,7 @@ def create_retrieval_prompt(
 Description: {description}
 {choices}
 
-Please reason step by step, and put your final answer (only the choice letter) within \\boxed{"{}"}.
-
-Example format: After reasoning, conclude with: The answer is \\boxed{{A}}"""
+Output ONLY the answer in the format: \\boxed{{your_choice}}. Do not output any additional text or explanation."""
 
 
 # ============================================================================
@@ -175,9 +167,7 @@ def create_isomer_discrimination_prompt(
 Molecule 1: {molecule_1}
 Molecule 2: {molecule_2}
 
-Please reason step by step, and put your final answer (Yes or No) within \\boxed{"{}"}.
-
-Example format: After reasoning, conclude with: The answer is \\boxed{{Yes}} or \\boxed{{No}}"""
+Output ONLY the answer in the format: \\boxed{{Yes}} or \\boxed{{No}}. Do not output any additional text or explanation."""
 
 
 # ============================================================================
@@ -204,9 +194,7 @@ def create_tautomer_recognition_prompt(
 Molecule 1: {molecule_1}
 Molecule 2: {molecule_2}
 
-Please reason step by step, and put your final answer (Yes or No) within \\boxed{"{}"}.
-
-Example format: After reasoning, conclude with: The answer is \\boxed{{Yes}} or \\boxed{{No}}"""
+Output ONLY the answer in the format: \\boxed{{Yes}} or \\boxed{{No}}. Do not output any additional text or explanation."""
 
 
 # ============================================================================
@@ -233,9 +221,7 @@ def create_protonation_recognition_prompt(
 Molecule 1: {molecule_1}
 Molecule 2: {molecule_2}
 
-Please reason step by step, and put your final answer (Yes or No) within \\boxed{"{}"}.
-
-Example format: After reasoning, conclude with: The answer is \\boxed{{Yes}} or \\boxed{{No}}"""
+Output ONLY the answer in the format: \\boxed{{Yes}} or \\boxed{{No}}. Do not output any additional text or explanation."""
 
 
 # ============================================================================

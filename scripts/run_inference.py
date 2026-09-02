@@ -51,13 +51,17 @@ from utils import chemistry, parsing, prompts, representations
 # Global variable for direct vLLM model (used with --direct-vllm flag)
 VLLM_MODEL = None
 
-# Setup logging
+# Setup logging - force flush and use stderr to avoid tqdm interference
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.StreamHandler()],
+    handlers=[logging.StreamHandler(sys.stderr)],
+    force=True,  # Override any existing configuration (e.g., from vLLM)
 )
 logger = logging.getLogger(__name__)
+
+# Ensure stderr is unbuffered for immediate output
+sys.stderr.reconfigure(line_buffering=True)
 
 
 # ============================================================================
@@ -372,7 +376,7 @@ def call_model_direct_vllm_batch(
         # Batch generate using generate() method for TRUE parallel batching
         logger.info(f"Batching {len(prompts)} prompts with .generate() for parallel processing")
         start_time = time.time()
-        outputs = VLLM_MODEL.generate(prompts, sampling_params, use_tqdm=False)
+        outputs = VLLM_MODEL.generate(prompts, sampling_params, use_tqdm=False) # TODO
         latency_ms = (time.time() - start_time) * 1000
         logger.info(f"Batch generation took {latency_ms/1000:.2f}s for {len(prompts)} prompts ({latency_ms/len(prompts):.0f}ms per prompt)")
 
@@ -2736,7 +2740,7 @@ def main():
 
     # Parse benchmark selection
     if args.benchmark == "all":
-        benchmark_nums = list(range(1, 8)) + [9, 10]
+        benchmark_nums = list(range(1, 7)) + [9, 10]
     else:
         benchmark_nums = [int(args.benchmark)]
 
@@ -2765,7 +2769,7 @@ def main():
         4: run_benchmark_4,
         5: run_benchmark_5,
         6: run_benchmark_6,
-        7: run_benchmark_7,
+        # 7: run_benchmark_7,
         9: run_benchmark_9,
         10: run_benchmark_10,
     }

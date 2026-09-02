@@ -1119,7 +1119,7 @@ def compute_cross_cutting_analyses():
         b4 = pd.read_csv(metrics_dir / "benchmark_4_metrics.csv")
         b5 = pd.read_csv(metrics_dir / "benchmark_5_metrics.csv")
         b6 = pd.read_csv(metrics_dir / "benchmark_6_metrics.csv")
-        b7 = pd.read_csv(metrics_dir / "benchmark_7_metrics.csv")
+        # b7 = pd.read_csv(metrics_dir / "benchmark_7_metrics.csv")
     except FileNotFoundError as e:
         logger.warning(f"Missing benchmark metrics: {e}")
         return
@@ -1241,8 +1241,8 @@ def compute_cross_cutting_analyses():
     )
     ablation_rows.extend(compute_delta(b6, "validity_rate", "B6_generation_validity"))
 
-    ablation_rows.extend(compute_delta(b7, "recovery_rate", "B7_completion_recovery"))
-    ablation_rows.extend(compute_delta(b7, "validity_rate", "B7_completion_validity"))
+    # ablation_rows.extend(compute_delta(b7, "recovery_rate", "B7_completion_recovery"))
+    # ablation_rows.extend(compute_delta(b7, "validity_rate", "B7_completion_validity"))
 
     ablation_df = pd.DataFrame(ablation_rows)
 
@@ -1284,7 +1284,7 @@ def compute_cross_cutting_analyses():
     rank_representations(b4, "accuracy", "B4_retrieval", higher_is_better=True)
     rank_representations(b5_overall, "f1", "B5_isomer_discrimination", higher_is_better=True)
     rank_representations(b6, "composite_score", "B6_generation", higher_is_better=True)
-    rank_representations(b7, "recovery_rate", "B7_completion", higher_is_better=True)
+    # rank_representations(b7, "recovery_rate", "B7_completion", higher_is_better=True)
 
     ranking_df = pd.DataFrame(ranking_rows)
 
@@ -1330,7 +1330,7 @@ def main():
 
     # Parse benchmark selection
     if args.benchmark == "all":
-        benchmark_nums = list(range(1, 8)) + [9, 10]
+        benchmark_nums = list(range(1, 7)) + [9, 10]
     else:
         benchmark_nums = [int(args.benchmark)]
 
@@ -1342,7 +1342,7 @@ def main():
         4: evaluate_benchmark_4,
         5: evaluate_benchmark_5,
         6: evaluate_benchmark_6,
-        7: evaluate_benchmark_7,
+        # 7: evaluate_benchmark_7,
         9: evaluate_benchmark_9,
         10: evaluate_benchmark_10,
     }

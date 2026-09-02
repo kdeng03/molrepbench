@@ -13,8 +13,8 @@ build/
 CLAUDE.md
 
 # Results and outputs
-results/
-results_*/
+# results/
+# results_*/
 plots/
 plots_*/
 nohup_logs/
@@ -24,7 +24,7 @@ slurm_logs/
 *.log
 
 # Data (optional - you may want to keep small datasets)
-data/chebi20_train.csv
+data/benchmark_data_small/chebi20_train.csv
 data/chebi20_val.csv
 data/chebi20_test.csv
 data/backup_full_dataset/
@@ -46,3 +46,5 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+
+archive/

@@ -110,6 +110,62 @@ python scripts/run_inference.py --benchmark 1 --model qwen3-4b-thinking-2507 \
 python scripts/run_inference.py --benchmark 6 --model qwen3-4b-thinking-2507 --dry-run
 ```
 
+> kdeng03
+```bash
+# Serve qwen3_4b_i
+HF_ENDPOINT=https://hf-mirror.com \
+vllm serve Qwen/Qwen3-4B-Instruct-2507 \
+--gpu-memory-utilization 0.88 \
+--max-model-len 16384 \
+--port 8000
+
+# Infer
+## qwen3_4b_i
+HF_ENDPOINT=https://hf-mirror.com \
+python scripts/run_inference.py \
+--model qwen3-4b-instruct-2507 \
+--direct_vllm \
+--batch_size 4096 \
+--thinking off 2>&1 | tee logs/infer_qwen3_4b_i.log
+
+## qwen3_vl_4b_i
+# HF_ENDPOINT=https://hf-mirror.com \
+# python scripts/run_inference.py \
+# --model qwen3-vl-4b-instruct \
+# --direct_vllm \
+# --batch_size 4096 \
+# --thinking off 2>&1 | tee logs/infer_qwen3_vl_4b_i.log
+
+# No batch (50 default)
+HF_ENDPOINT=https://hf-mirror.com \
+python scripts/run_inference.py \
+--model qwen3-vl-4b-instruct \
+--direct_vllm \
+--thinking off 2>&1 | tee logs/infer_qwen3_vl_4b_i.log
+
+## molqwen3_4b_i_sft
+# HF_ENDPOINT=https://hf-mirror.com PYTHONPATH=$(pwd) \
+# python scripts/run_inference.py \
+# --model molqwen3-4b-instruct-sft \
+# --direct_vllm \
+# --batch_size 4096 \
+# --thinking off 2>&1 | tee logs/infer_molqwen3_4b_i_sft.log
+
+# No batch
+HF_ENDPOINT=https://hf-mirror.com \
+python scripts/run_inference.py \
+--model molqwen3-4b-instruct-sft \
+--direct_vllm \
+--thinking off 2>&1 | tee logs/infer_molqwen3_4b_i_sft.log
+
+## molqwen3_vl_4b_i_sft
+HF_ENDPOINT=https://hf-mirror.com \
+python scripts/run_inference.py \
+--model molqwen3-vl-4b-instruct-sft \
+--direct_vllm \
+--thinking off 2>&1 | tee logs/infer_molqwen3_vl_4b_i_sft.log
+```
+
 Results are saved as JSONL files with per-row checkpointing for crash recovery.
 
 For API-based models (Claude, GPT, Gemini), see the respective directories under `claude/`, `gpt/`, `gemini/`.
@@ -119,7 +175,7 @@ For API-based models (Claude, GPT, Gemini), see the respective directories under
 Score raw results and compute metrics (no GPU needed):
 
 ```bash
-python scripts/evaluate.py --all
+python scripts/evaluate.py --benchmark all 2>&1 | tee logs/eval.log
 ```
 
 Produces scored CSVs and aggregated metrics under the results directory.

@@ -13,7 +13,7 @@ from collections import OrderedDict
 # ============================================================================
 
 PROJECT_ROOT = Path(__file__).parent.parent  # benchmark/ directory
-DATA_DIR = Path("/node2/arunraja/benchmark_data_small")
+DATA_DIR = Path("data/benchmark_data_small")
 RESULTS_DIR = PROJECT_ROOT / "results_small"
 FIGURES_DIR = PROJECT_ROOT / "figures"
 
@@ -163,7 +163,86 @@ BENCHMARK_TOKEN_BUDGETS = {
 # ============================================================================
 
 MODELS = [
-
+    { ### kdeng03
+        "name": "Qwen3-4B-Instruct-2507",
+        "id": "qwen3-4b-instruct-2507",
+        "hf_id": "Qwen/Qwen3-4B-Instruct-2507",
+        "reasoning_parser": None,
+        "thinking_on_config": {
+            "chat_template_kwargs": {}
+        },
+        "thinking_off_config": {
+            "chat_template_kwargs": {"enable_thinking": False}
+        },
+        "generation_params": {
+            "temperature": 0.7,  # Qwen3-4B-Instruct best practice
+            "top_p": 0.8,      # Qwen3-4B-Instruct best practice
+            "top_k": 20,        # Qwen3-4B-Instruct best practice
+            "max_tokens": 256,
+        },
+        "skip_stop_on_thinking_off": True,  # Reasons in plain text with thinking off
+        "marker": "^",  # circle
+    },
+    { ### kdeng03
+        "name": "MolQwen3-4B-Instruct-SFT",
+        "id": "molqwen3-4b-instruct-sft",
+        "hf_id": "kdeng03/MolQwen3-4B-Instruct-SFT",
+        "reasoning_parser": None,
+        "thinking_on_config": {
+            "chat_template_kwargs": {}
+        },
+        "thinking_off_config": {
+            "chat_template_kwargs": {"enable_thinking": False}
+        },
+        "generation_params": {
+            "temperature": 0.7,  # Qwen3-4B-Instruct best practice
+            "top_p": 0.8,      # Qwen3-4B-Instruct best practice
+            "top_k": 20,        # Qwen3-4B-Instruct best practice
+            "max_tokens": 256,
+        },
+        "skip_stop_on_thinking_off": True,  # Reasons in plain text with thinking off
+        "marker": "A",  # circle
+    },
+    { ### kdeng03
+        "name": "Qwen3-VL-4B-Instruct",
+        "id": "qwen3-vl-4b-instruct",
+        "hf_id": "Qwen/Qwen3-VL-4B-Instruct",
+        "reasoning_parser": None,
+        "thinking_on_config": {
+            "chat_template_kwargs": {}
+        },
+        "thinking_off_config": {
+            "chat_template_kwargs": {"enable_thinking": False}
+        },
+        "generation_params": {
+            "temperature": 1.,  # Qwen3-4B-Instruct best practice
+            "top_p": 1.,      # Qwen3-4B-Instruct best practice
+            "top_k": 40,        # Qwen3-4B-Instruct best practice
+            "max_tokens": 256,
+        },
+        "skip_stop_on_thinking_off": True,  # Reasons in plain text with thinking off
+        "marker": "<",  # circle filled
+    },
+    { ### kdeng03
+        "name": "MolQwen3-VL-4B-Instruct-SFT",
+        "id": "molqwen3-vl-4b-instruct-sft",
+        "hf_id": "kdeng03/MolQwen3-VL-4B-Instruct-SFT",
+        "reasoning_parser": None,
+        "thinking_on_config": {
+            "chat_template_kwargs": {}
+        },
+        "thinking_off_config": {
+            "chat_template_kwargs": {"enable_thinking": False}
+        },
+        "generation_params": {
+            "temperature": 1.,  # Qwen3-4B-Instruct best practice
+            "top_p": 1.,      # Qwen3-4B-Instruct best practice
+            "top_k": 40,        # Qwen3-4B-Instruct best practice
+            "max_tokens": 256,
+        },
+        "skip_stop_on_thinking_off": True,  # Reasons in plain text with thinking off
+        "marker": ">",  # circle filled
+    },
     {
         "name": "Qwen3-4B-Thinking-2507",
         "id": "qwen3-4b-thinking-2507",
